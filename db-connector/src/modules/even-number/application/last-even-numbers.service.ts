@@ -11,6 +11,6 @@ export class LastEvenNumbersService {
   ) {}
 
   run(): Promise<EvenNumber[]> {
-    return this.model.find().sort({ date: 1 }).limit(MAX_RECORDS).exec();
+    return this.model.find().sort({ createdAt: -1 }).limit(MAX_RECORDS).exec();
   }
 }
