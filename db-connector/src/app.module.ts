@@ -7,7 +7,7 @@ import { OddNumberModule } from './modules/odd-number/odd-number.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      `mongodb://admin:${process.env.MONGO_PASSWORD}@${process.env.MONGO_IP}:${process.env.MONGO_PORT}`,
+      `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_IP}:${process.env.MONGO_PORT}`,
       {
         dbName: `${process.env.MONGO_DB}`,
       },
