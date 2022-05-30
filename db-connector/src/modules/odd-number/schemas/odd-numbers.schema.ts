@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type OddNumberDocument = OddNumber & Document;
 
-@Schema()
+@Schema({ timestamps: true })
 export class OddNumber {
   @Prop()
   value: number;

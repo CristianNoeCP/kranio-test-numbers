@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type EvenNumberDocument = EvenNumber & Document;
 
-@Schema()
+@Schema({ timestamps: true })
 export class EvenNumber {
   @Prop()
   value: number;
