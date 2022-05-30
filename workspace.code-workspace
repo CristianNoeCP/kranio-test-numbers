@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "root"
+    },
+    {
+      "path": "./number-validator",
+      "name": "numberValidator"
+    },
+    {
+      "path": "./db-connector",
+      "name": "dbConnector"
+    }
+  ],
+  "settings": {
+    "cSpell.words": [
+      "microservices",
+      "NATS",
+      "nestjs"
+    ]
+  }
+}

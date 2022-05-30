@@ -1,0 +1,55 @@
+version: "3.7"
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - 27017:27017
+    hostname: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    volumes:
+      - ./db:/data/db:rw
+    networks:
+      - local
+
+  nats:
+    image: nats:latest
+    container_name: nats
+    ports:
+      - 4222:4222
+    networks:
+      - local
+
+  validator:
+    build: ./number-validator
+    container_name: validator
+    ports:
+      - "3000:3000"
+    networks:
+      - local
+    volumes:
+      - ./number-validator:/usr/src/app:delegated
+    command: "npm run start"
+    env_file:
+      - ./.env
+
+  connector:
+    build: ./db-connector
+    container_name: connector
+    depends_on:
+      - mongo
+    ports:
+      - "3001:3001"
+    networks:
+      - local
+    volumes:
+      - ./db-connector:/usr/src/app:delegated
+    command: "npm run start"
+    env_file:
+      - ./.env
+
+networks:
+  local:
+    driver: bridge
