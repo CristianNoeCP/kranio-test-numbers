@@ -1,15 +1,12 @@
-FROM node:12-alpine
+FROM node:14-alpine
 
-LABEL name="node12:local"
+WORKDIR /usr/src/app
+
+LABEL name="node14:local"
 
 COPY package.json ./
 
-RUN npm install glob rimraf
-
-RUN npm install --only=development
+RUN npm install
 
 COPY . .
 
-RUN npm run build
-
-WORKDIR /usr/src/app
